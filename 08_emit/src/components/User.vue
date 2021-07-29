@@ -19,8 +19,7 @@
           :address="address"
           :phone="phone"
           :hasDog="hasDog"
-          @child="parents"
-          >
+          @child="parents"> <!-- 2. emit 받아오기 -->
         </UserEdit>
       </v-flex>
     </v-layout>

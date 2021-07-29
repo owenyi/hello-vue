@@ -23,7 +23,7 @@
         label="반려견 없음"
         :value="false"
       ></v-radio>
-      <v-btn @click="changeUser">수정 완료</v-btn>
+      <v-btn @click="changeUser">수정 완료</v-btn> <!-- -->
     </v-radio-group>
   </div>
 </template>
@@ -45,7 +45,7 @@
     methods: {
       changeUser() {
         // console.log(this.user)
-        this.$emit('child', this.user)
+        this.$emit('child', this.user) // 1. emit 등록
       }
     }
   }
