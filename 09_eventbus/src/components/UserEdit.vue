@@ -46,7 +46,8 @@
     methods: {
       changeUser() {
         this.$emit('child', this.user)
-        eventBus.$emit("userWasEdited", new Date()) // 3. emit 등록
+        // eventBus.$emit("userWasEdited", new Date()) // 3. emit 등록
+        eventBus.userWasEdited(new Date())
       }
     }
   }
