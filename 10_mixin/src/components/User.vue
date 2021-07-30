@@ -3,6 +3,7 @@
     <h1>User 컴포넌트</h1>
     <p>이름: 뷰제이에스</p>
     <p>{{ getDateAndTime(createdAt) }}</p>
+    {{ helloToMixin }}
     <hr>
     <v-layout row wrap>
       <v-flex xs12 sm6>
@@ -47,7 +48,13 @@
         createdAt: null,
       }
     },
+    computed: {
+      helloToMixin() {
+        return this.mixinData + "안녕하시오!"
+      }
+    },
     created() {
+      console.log('부모(유저 컴포넌트) 렌더링')
       this.createdAt = new Date()
     },
     methods: {
@@ -57,12 +64,12 @@
         this.phone = user.phone
         this.hasDog = user.hasDog
       },
-      // getDateAndTime(date) {
-      //   let hours = date.getHours()
-      //   let minutes = date.getMinutes()
-      //   let fullDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-      //   return `${fullDate} ${hours}:${minutes}`
-      // },
+      getDateAndTime(date) { // 나중에 렌더링...화면에는 이게 반영된다.
+        let hours = date.getHours()
+        let minutes = date.getMinutes()
+        let fullDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+        return `${hours}:${minutes}`
+      },
     },
     mixins: [dateFormat],
   }

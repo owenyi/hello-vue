@@ -54,6 +54,7 @@
       },
     },
     created() {
+      console.log('자식(유저 디테일 컴포넌트) 렌더링')
       eventBus.$on('userWasEdited', date => {
         this.editedDate = date
       })
