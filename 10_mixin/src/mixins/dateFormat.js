@@ -1,4 +1,4 @@
-export const userFormat = {
+export const dateFormat = {
   methods: {
     getDateAndTime(date) {
       if (date !== null) {
