@@ -27,6 +27,10 @@ export default new Router({
       path: '/users', // 여기 안 써 놓으면 url에는 미반영?
       name: 'users',
       component: Users,
+      beforeEnter: (to, from, next) => {
+        console.log('to : ', to, 'from: ', from)
+        next()
+      },
       children: [
         {
           path: ':id',
