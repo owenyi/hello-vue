@@ -32,15 +32,7 @@
         <v-list-tile 
         router 
         :to="{
-          name: 'users', 
-          params: {
-            userId: 4321,
-            name: 'Owen',
-          },
-          query: {
-            group: 'member',
-            category: 'trial',
-          },
+          name: 'users',
         }" 
           exact
         >
