@@ -42,7 +42,15 @@ export default new Router({
           name: 'users-edit',
           component: UsersEdit
         },
-      ]
+      ] // users children
     },
+    {
+      path: '/redirect-me',
+      redirect: { name: 'users' },
+    },
+    {
+      path: '/*',
+      redirect: { name: 'home' }
+    }
   ]
 })
