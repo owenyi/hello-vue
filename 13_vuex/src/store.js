@@ -32,6 +32,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
-
+    addUsers(context, payload) {
+      context.commit('addUsers', payload)
+    },
+    // addUsers({{ commit }}, payload) { // destructuring
+    //   commit('addUsers', payload)
+    // },
   }
 })

@@ -53,6 +53,9 @@ import { mapMutations } from 'vuex'
         // EventBus.$emit('signUp', userObj)
         // this.$store.commit('addUsers', userObj)
         this.addUsers(userObj)
+        /* actions...안 쓸 거지만 방법만 알기
+        this.$store.dispatch('addUsers', userObj)
+        */
         this.clearForm()
       },
       clearForm() {
