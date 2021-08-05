@@ -6,7 +6,7 @@
           class="mb-3"
           color="red"
           type="error"
-          :value="true"
+          :value="isError"
         >아이디와 비밀번호를 확인해주세요.</v-alert>
         <v-alert
           class="mb-3"
@@ -86,6 +86,7 @@ export default {
       // else if (selectedUser.password !== this.password) alert('잘못된 비밀번호입니다.')
       if (selectedUser === null || selectedUser.password !== this.password) {
         this.isError = true
+        this.isSuccess = false
       } else {
         alert('로그인이 완료됐습니다.')
         this.email = null
