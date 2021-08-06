@@ -12,7 +12,7 @@
           class="mb-3"
           color="green"
           type="success"
-          :value="isSuccess"
+          :value="isLogin"
         >로그인이 완료되었습니다.</v-alert>
         <v-card>
           <v-toolbar flat color="#E0E0E0">
@@ -47,53 +47,61 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex"
+
 export default {
   data() {
     return {
       email: null,
       password: null,
-      allUsers: [
-        { id: 1, name: 'owen', email: 'owen@gmail.com', password: '123456' },
-        { id: 2, name: 'hoza', email: 'hoza@gmail.com', password: '123456' },
-      ],
       isError: false,
-      isSuccess: false,
     }
   },
+  computed: {
+    ...mapState(['isLogin']),
+  },
   methods: {
+    ...mapActions(['signIn']),
     login() {
 
       // alert(this.email + ' ' + this.password)
 
-      if (this.email === null) {
-        alert('이메일을 입력하세요.')
-        this.$refs.email.focus()
-        return
-      } else if (this.password === null) {
-        alert('비밀번호 입력하세요.')
-        this.$refs.password.focus()
-        return
-      }
+      this.signIn({ email: this.email, password: this.password })
+        .then((flag) => {
+          this.isError = flag
+          if (!flag) {
+            this.email = null
+            this.password = null
+          }
+        })
 
-      let selectedUser = null
-      this.allUsers.forEach(user => {
-        if (user.email === this.email) {
-          selectedUser = user
-        }
-      })
+      // if (this.email === null) {
+      //   alert('이메일을 입력하세요.')
+      //   this.$refs.email.focus()
+      //   return
+      // } else if (this.password === null) {
+      //   alert('비밀번호 입력하세요.')
+      //   this.$refs.password.focus()
+      //   return
+      // }
 
-      // if (selectedUser === null) alert('잘못된 이메일입니다.')
-      // else if (selectedUser.password !== this.password) alert('잘못된 비밀번호입니다.')
-      if (selectedUser === null || selectedUser.password !== this.password) {
-        this.isError = true
-        this.isSuccess = false
-      } else {
-        alert('로그인이 완료됐습니다.')
-        this.email = null
-        this.password = null
-        this.isError = false
-        this.isSuccess = true
-      }
+      // let selectedUser = null
+      // this.allUsers.forEach(user => {
+      //   if (user.email === this.email) {
+      //     selectedUser = user
+      //   }
+      // })
+
+      // if (selectedUser === null || selectedUser.password !== this.password) {
+      //   this.isError = true
+      //   this.isSuccess = false
+      // } else {
+      //   alert('로그인이 완료됐습니다.')
+      //   this.email = null
+      //   this.password = null
+      //   this.isError = false
+      //   this.isSuccess = true
+      // }
     }
   }
 }
